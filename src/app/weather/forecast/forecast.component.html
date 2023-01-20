@@ -1,1 +1,9 @@
-{{ position | json }}
+<ul class="list-group">
+    <li 
+        *ngFor="let row of weather$ | async"
+        class="weather-item list-group-item"
+    >
+        <p class="temp">{{ row.temp | number: '1.0-0'}}°C</p>
+        <p class="day">{{ row.dt_txt | date: 'E' }}</p> 
+    </li>
+</ul>  

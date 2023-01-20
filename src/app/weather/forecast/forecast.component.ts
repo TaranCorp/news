@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ForecastService } from '../forecast.service';
+import { FlatSimpleWeather, ForecastService } from '../forecast.service';
+import { delay, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-forecast',
@@ -7,14 +8,11 @@ import { ForecastService } from '../forecast.service';
   styleUrls: ['./forecast.component.scss']
 })
 export class ForecastComponent {
-  position;
+  weather$: Observable<Array<FlatSimpleWeather>>;
 
   constructor(private forecastService: ForecastService) {}
 
   ngOnInit() {
-    this.forecastService.getUserLocation().subscribe(position => {
-      this.position = position;
-      console.log(position);
-    });
+    this.weather$ = this.forecastService.getWeatherForFiveDays();
   }
 }

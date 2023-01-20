@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { ForecastComponent } from './forecast/forecast.component';
 
 
@@ -11,7 +12,8 @@ import { ForecastComponent } from './forecast/forecast.component';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   exports: [
     ForecastComponent
